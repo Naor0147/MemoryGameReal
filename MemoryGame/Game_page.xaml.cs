@@ -26,6 +26,9 @@ namespace MemoryGame
         public Game_page()
         {
             this.InitializeComponent();
+            Grid a = new Grid();
+            //my_G.RowDefinitions.Add
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
