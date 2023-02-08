@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="MemoryGame.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MemoryGame"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+
+    </Page.Resources>
+
+    <Grid Background="#FF5D5DBB">
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Column="1" HorizontalAlignment="Center" FontSize="70">Meomry Game</TextBlock>
+        <Button x:Name="Football_button" FontSize="80px" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Click="Football_button_Click">Football</Button>
+        <Button x:Name="Card_button" FontSize="80px" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Click="Card_button_Click">cards</Button>
+
+
+
+    </Grid>
+</Page>
