@@ -17,21 +17,32 @@ using Windows.UI.Xaml.Navigation;
 
 namespace MemoryGame
 {
+    public enum levelType
+    {
+        easy , medium, high  
+    }
+    public enum ThemeType
+    {
+        Cards, Football 
+    }
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        Data data= new Data();
         public MainPage()
         {
 
             this.InitializeComponent();
+            
                     
         }
 
         private void Card_button_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Game_page), 1);
+            data.Theme=ThemeType.Cards;
+            //Frame.Navigate(typeof(Game_page), 1);
         }
 
         private void Football_button_Click(object sender, RoutedEventArgs e)
