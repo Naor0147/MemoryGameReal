@@ -26,9 +26,25 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Column="1" HorizontalAlignment="Center" FontSize="70">Meomry Game</TextBlock>
-        <Button x:Name="Football_button" FontSize="80px" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Click="Football_button_Click">Football</Button>
-        <Button x:Name="Card_button" FontSize="80px" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Click="Card_button_Click">cards</Button>
-
+        <RadioButton FontSize="80px" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" GroupName="ThemeRadio" >
+            Cards
+        </RadioButton>
+        <RadioButton FontSize="80px" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0" GroupName="ThemeRadio" >
+            Football
+        </RadioButton>
+        <RadioButton FontSize="80px" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" GroupName="GridSizeRadio">
+            Hard
+        </RadioButton>
+        <RadioButton FontSize="80px" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="2" GroupName="GridSizeRadio">
+            Normal
+        </RadioButton>
+        <RadioButton FontSize="80px" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="2" GroupName="GridSizeRadio">
+            easy
+        </RadioButton>
+        
+        <Button x:Name="Football_button" FontSize="80px" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Click="Start_Click">Start</Button>
+        
+        
 
 
     </Grid>

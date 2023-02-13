@@ -58,6 +58,9 @@ namespace MemoryGame
         }
 
         public void buildTheRandomPhotos()
+        {
+
+        }
 
 
         public List<Image> getPhotosList(int kindGame)

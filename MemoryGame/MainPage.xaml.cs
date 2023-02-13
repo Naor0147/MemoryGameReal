@@ -36,7 +36,7 @@ namespace MemoryGame
 
             this.InitializeComponent();
             
-                    
+              
         }
 
         private void Card_button_Click(object sender, RoutedEventArgs e)
@@ -45,7 +45,7 @@ namespace MemoryGame
             //Frame.Navigate(typeof(Game_page), 1);
         }
 
-        private void Football_button_Click(object sender, RoutedEventArgs e)
+        private void Start_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Game_page), 2);
 
