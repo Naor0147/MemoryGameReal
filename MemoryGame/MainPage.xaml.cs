@@ -19,17 +19,22 @@ namespace MemoryGame
 {
     public enum levelType
     {
-        easy , medium, high  
+        easy , normal, hard 
     }
     public enum ThemeType
     {
         Cards, Football 
     }
+
+
+   
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        public levelType levelTypeSelect;
+        public ThemeType themeTypeSelect;
         Data data= new Data();
         public MainPage()
         {
@@ -47,8 +52,37 @@ namespace MemoryGame
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Game_page), 2);
+            Data data = new Data(levelTypeSelect,themeTypeSelect);
+            Frame.Navigate(typeof(Game_page), data);
+            
 
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton radioButton = (RadioButton)sender;
+            string a = radioButton.Content.ToString();
+
+            if (a == "Hard")
+            {
+                levelTypeSelect = levelType.hard;
+            }
+            else if(a== "Normal")
+            {
+                levelTypeSelect = levelType.normal;
+            }
+            else if (a == "Easy")
+            {
+                levelTypeSelect = levelType.easy;
+            }
+            else if (a== "Football")
+            {
+                themeTypeSelect = ThemeType.Football;
+            }
+            else if (a == "Cards")
+            {
+                themeTypeSelect = ThemeType.Cards;
+            }
         }
     }
 }

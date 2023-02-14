@@ -24,24 +24,24 @@ namespace MemoryGame
     /// </summary>
     public sealed partial class Game_page : Page
     {
-        public int GameTheme=1;//1 is Card 2 is football 
+        private Data GameTheme;//1 is Card 2 is football 
         public int gameSize = 6;
         public Image[] cardArr=new Image[18];
         public Game_page()
         {
             this.InitializeComponent();
-
+/*
             List<Image> Photos = getPhotosList(2);// Get the photos 
             buildGrid(6);
 
 
-            
+       
             for (int i = 0; i < gameSize; i++)
             {
                 /* button = new Button();
                  button.Content = GameTheme;
                  button.FontSize = 40;*/
-
+/*
                 Image a  = Photos[i];
                 Grid.SetColumn(a, i);
 
@@ -52,7 +52,7 @@ namespace MemoryGame
             }/// לעשות ליסט שיש שם את כל האימגיים ואז להוריד כל פעם שמתשמים 
            // לעשות עוד ליסט עם כל המספרים של הגרידים ואז שמים תמונה ומחסרים אותה 
           
-
+            */
 
 
         }
@@ -63,10 +63,10 @@ namespace MemoryGame
         }
 
 
-        public List<Image> getPhotosList(int kindGame)
+        public List<Image> getPhotosList()
         {
             List<Image> list = new List<Image>();
-            if (kindGame == 2)//Football players
+            if (GameTheme.Theme==ThemeType.Football)//Football players
             {
                 for (int i = 1; i < 19; i++)
                 {
@@ -75,6 +75,10 @@ namespace MemoryGame
                     a.Source = new BitmapImage(new Uri(_imageAdress));
                     list.Add(a);
                 }
+            }
+            else
+            {
+                //Card
             }
             return list;    
             
@@ -93,9 +97,10 @@ namespace MemoryGame
             }
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected  override void OnNavigatedTo(NavigationEventArgs e)
         {
-            GameTheme = (int)e.Parameter;
+            GameTheme = (Data)e.Parameter;
+            
         }
     }
 }

@@ -26,20 +26,19 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Column="1" HorizontalAlignment="Center" FontSize="70">Meomry Game</TextBlock>
-        <RadioButton FontSize="80px" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" GroupName="ThemeRadio" >
-            Cards
+        <RadioButton Content="Cards" FontSize="80px" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" GroupName="ThemeRadio" Checked="RadioButton_Checked" IsChecked="True" >
         </RadioButton>
-        <RadioButton FontSize="80px" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0" GroupName="ThemeRadio" >
+        <RadioButton FontSize="80px" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0" GroupName="ThemeRadio" Checked="RadioButton_Checked">
             Football
         </RadioButton>
-        <RadioButton FontSize="80px" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" GroupName="GridSizeRadio">
+        <RadioButton FontSize="80px" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" GroupName="GridSizeRadio" Checked="RadioButton_Checked">
             Hard
         </RadioButton>
-        <RadioButton FontSize="80px" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="2" GroupName="GridSizeRadio">
-            Normal
+        <RadioButton Content="Normal" FontSize="80px" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="2" GroupName="GridSizeRadio" Checked="RadioButton_Checked" IsChecked="True" >
+            
         </RadioButton>
-        <RadioButton FontSize="80px" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="2" GroupName="GridSizeRadio">
-            easy
+        <RadioButton FontSize="80px" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="2" GroupName="GridSizeRadio" Checked="RadioButton_Checked" >
+            Easy
         </RadioButton>
         
         <Button x:Name="Football_button" FontSize="80px" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Click="Start_Click">Start</Button>
