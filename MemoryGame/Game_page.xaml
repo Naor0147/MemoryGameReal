@@ -9,6 +9,22 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Background="#FF8C6988" x:Name="my_G">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="4*"/>
+
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="Game_Grid" Grid.Row="1" Grid.Column="1" Background="Blue">
+            
+        </Grid>
+
 
     </Grid>
 </Page>

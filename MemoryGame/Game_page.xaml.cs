@@ -24,9 +24,12 @@ namespace MemoryGame
     /// </summary>
     public sealed partial class Game_page : Page
     {
-        private Data GameTheme;//1 is Card 2 is football 
+        private Data GameSettings;//1 is Card 2 is football 
         public int gameSize = 6;
-        public Image[] cardArr=new Image[18];
+        //public Image[] cardArr=new Image[18];
+        List<int[]> PosPositions = new List<int[]>();
+
+        List<Image> Photos;
         public Game_page()
         {
             this.InitializeComponent();
@@ -57,20 +60,54 @@ namespace MemoryGame
 
         }
 
-        public void buildTheRandomPhotos()
+        public void buildTheRandomPhotos(List<Image> ImageList)
         {
+            List<Image> _photos = ImageList;
 
+            int _PosIndex;
+            int _ImageIndex;
+            Random random= new Random();
+            while (PosPositions.Any())
+            {
+                _ImageIndex = random.Next(_photos.Count);// the postion of the image in in List
+               
+                /*_PosIndex = random.Next(PosPositions.Count);// the postion of the image 
+                int[] pos1 = PosPositions[_PosIndex];
+                PosPositions.RemoveAt(_PosIndex);
+
+                _PosIndex = random.Next(PosPositions.Count);// the postion of the image 
+                int[] pos2 = PosPositions[_PosIndex];
+                PosPositions.RemoveAt(_PosIndex);*/
+
+
+                CardClass card = new CardClass(_photos[_ImageIndex], getPos(),getPos());
+                //PosPositions.RemoveAt(_PosIndex);
+                _photos.RemoveAt(_ImageIndex);
+
+                card.addToGrid(Game_Grid);
+            }
+        }
+
+        public int[] getPos()
+        {
+            Random random = new Random();
+
+            int _PosIndex = random.Next(PosPositions.Count);// the postion of the image 
+            int[] pos = PosPositions[_PosIndex];
+            PosPositions.RemoveAt(_PosIndex);
+            return pos;
         }
 
 
         public List<Image> getPhotosList()
         {
             List<Image> list = new List<Image>();
-            if (GameTheme.Theme==ThemeType.Football)//Football players
+
+            if (GameSettings.Theme==ThemeType.Football)//Football players
             {
-                for (int i = 1; i < 19; i++)
+                for (int i = 0; i < 18; i++)
                 {
-                    string _imageAdress = $"ms-appx:///football_players/Football_{i - 1}.png";
+                    string _imageAdress = $"ms-appx:///football_players/Football_{i + 1}.png";
                     Image a = new Image();
                     a.Source = new BitmapImage(new Uri(_imageAdress));
                     list.Add(a);
@@ -79,27 +116,60 @@ namespace MemoryGame
             else
             {
                 //Card
+                for (int i = 0; i < 67; i++)
+                {
+                    string _imageAdress = $"ms-appx:///cards_Photos/Cards_{i +1}.png";
+                    Image a = new Image();
+                    a.Source = new BitmapImage(new Uri(_imageAdress));
+                    list.Add(a);
+                }
             }
             return list;    
             
 
         }
 
-        public void buildGrid(int gridSize)
+        public void buildGrid()
         {
-            for (int i = 0; i < gridSize; i++)
+            levelType gridSize = GameSettings.levelDiffculty;
+            int size = 2;// levelType == easy Defult
+
+            if (gridSize ==levelType.normal)
+            {
+                size = 4;
+            }
+            else if( gridSize ==levelType.hard)
+            {
+                size = 6;
+            }
+
+            for (int i = 0; i < size; i++)// builds the the grids row and column
             {
                 RowDefinition rowDef = new RowDefinition();
-                my_G.RowDefinitions.Add(rowDef);
+                Game_Grid.RowDefinitions.Add(rowDef);
                 
                 ColumnDefinition colDef = new ColumnDefinition();
-                my_G.ColumnDefinitions.Add(colDef);
+                Game_Grid.ColumnDefinitions.Add(colDef);
+            }
+
+            // bulids a List of the all possible position of the Photos
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    PosPositions.Add(new int[] { i, j });
+                }
             }
         }
 
         protected  override void OnNavigatedTo(NavigationEventArgs e)
         {
-            GameTheme = (Data)e.Parameter;
+            GameSettings = (Data)e.Parameter;
+            buildGrid();
+            Photos= getPhotosList();
+            buildTheRandomPhotos(Photos);
+
+
             
         }
     }
