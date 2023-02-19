@@ -202,6 +202,7 @@
     <Content Include="cards_Photos\Cards_7.png" />
     <Content Include="cards_Photos\Cards_8.png" />
     <Content Include="cards_Photos\Cards_9.png" />
+    <Content Include="def_back_card.png" />
     <Content Include="football_players\Football_1.png" />
     <Content Include="football_players\Football_10.png" />
     <Content Include="football_players\Football_11.png" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -29,37 +30,50 @@ namespace MemoryGame
         //public Image[] cardArr=new Image[18];
         List<int[]> PosPositions = new List<int[]>();
 
+        List<CardClass> CardClassesList = new List<CardClass>();
+
         List<Image> Photos;
+
+        public DispatcherTimer DispatcherTimer;
+
         public Game_page()
         {
             this.InitializeComponent();
-/*
-            List<Image> Photos = getPhotosList(2);// Get the photos 
-            buildGrid(6);
-
-
-       
-            for (int i = 0; i < gameSize; i++)
-            {
-                /* button = new Button();
-                 button.Content = GameTheme;
-                 button.FontSize = 40;*/
-/*
-                Image a  = Photos[i];
-                Grid.SetColumn(a, i);
-
-                
-                Grid.SetRow(a, i);
-                my_G.Children.Add(a);
-                
-            }/// לעשות ליסט שיש שם את כל האימגיים ואז להוריד כל פעם שמתשמים 
-           // לעשות עוד ליסט עם כל המספרים של הגרידים ואז שמים תמונה ומחסרים אותה 
-          
-            */
-
-
+            DispatcherTimer= new DispatcherTimer();
+            DispatcherTimer.Interval = TimeSpan.FromMilliseconds(1);
+            DispatcherTimer.Start();
+            DispatcherTimer.Tick += DispatcherTimer_Tick;
         }
 
+        private void DispatcherTimer_Tick(object sender, object e)
+        {
+            if (!CardClassesList.Any())
+            {
+                return;
+            }
+
+            int count = 0;
+            for (int i = 0; i < CardClassesList.Count; i++)
+            {
+                if (CardClassesList[i].IsOnlyOneClicked())
+                {
+                    count++;
+                }
+                if (count>1)
+                {
+                    reastall();
+                    count = 0;
+                }
+            }
+        }
+
+        public void reastall()
+        {
+            for (int i = 0; i < CardClassesList.Count; i++)
+            {
+                CardClassesList[i].reastClick();
+            }
+        }
         public void buildTheRandomPhotos(List<Image> ImageList)
         {
             List<Image> _photos = ImageList;
@@ -71,18 +85,11 @@ namespace MemoryGame
             {
                 _ImageIndex = random.Next(_photos.Count);// the postion of the image in in List
                
-                /*_PosIndex = random.Next(PosPositions.Count);// the postion of the image 
-                int[] pos1 = PosPositions[_PosIndex];
-                PosPositions.RemoveAt(_PosIndex);
-
-                _PosIndex = random.Next(PosPositions.Count);// the postion of the image 
-                int[] pos2 = PosPositions[_PosIndex];
-                PosPositions.RemoveAt(_PosIndex);*/
-
-
-                CardClass card = new CardClass(_photos[_ImageIndex], getPos(),getPos());
+               
+                CardClass card = new CardClass(_photos[_ImageIndex], getPos(),getPos());//built the card get his first pos and his seacnd 
+                CardClassesList.Add(card);// add car to the list of cards 
                 //PosPositions.RemoveAt(_PosIndex);
-                _photos.RemoveAt(_ImageIndex);
+                _photos.RemoveAt(_ImageIndex);// remove the image addres from the list , so the card will apper only 2 times 
 
                 card.addToGrid(Game_Grid);
             }
