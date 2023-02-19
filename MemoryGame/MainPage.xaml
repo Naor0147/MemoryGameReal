@@ -26,10 +26,10 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Column="1" HorizontalAlignment="Center" FontSize="70">Meomry Game</TextBlock>
-        <RadioButton Content="Cards" FontSize="80px" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" GroupName="ThemeRadio" Checked="RadioButton_Checked" IsChecked="True" >
+        <RadioButton Content="Cards" FontSize="80px" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" GroupName="ThemeRadio" Checked="RadioButton_Checked"  >
         </RadioButton>
-        <RadioButton FontSize="80px" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0" GroupName="ThemeRadio" Checked="RadioButton_Checked">
-            Football
+        <RadioButton Content="Football" FontSize="80px" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0" GroupName="ThemeRadio" Checked="RadioButton_Checked" IsChecked="True">
+            
         </RadioButton>
         <RadioButton FontSize="80px" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" GroupName="GridSizeRadio" Checked="RadioButton_Checked">
             Hard

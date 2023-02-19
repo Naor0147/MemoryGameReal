@@ -64,6 +64,7 @@ namespace MemoryGame
                     reastall();
                     count = 0;
                 }
+                CheckWin();
             }
         }
 
@@ -74,6 +75,20 @@ namespace MemoryGame
                 CardClassesList[i].reastClick();
             }
         }
+
+        public void CheckWin()
+        {
+            for (int i = 0; i < CardClassesList.Count; i++)
+            {
+                if (!CardClassesList[i].isRight())
+                {
+                    return;
+                }
+                
+            }
+            Frame.Navigate(typeof(WinPage));
+        }
+
         public void buildTheRandomPhotos(List<Image> ImageList)
         {
             List<Image> _photos = ImageList;

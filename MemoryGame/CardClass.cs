@@ -131,7 +131,7 @@ namespace MemoryGame
         {
             return !(B1Clicked == B2Clicked);
         }
-        public void reastClick()
+        public async void reastClick()
         {
             if (B1Clicked == B2Clicked)
             {
@@ -139,6 +139,21 @@ namespace MemoryGame
             }
             B1Clicked = false;
             B2Clicked = false;
+
+
+
+            ImageBrush brush = new ImageBrush();
+            await Task.Delay(600);
+            //brush.ImageSource = Image.Source;
+            brush.ImageSource = def_img.Source;
+            button1.Background = brush;
+            button2.Background = brush;
+        }
+
+
+        public bool isRight()
+        {
+            return B1Clicked == B2Clicked && B1Clicked== true;
         }
     }
 }
