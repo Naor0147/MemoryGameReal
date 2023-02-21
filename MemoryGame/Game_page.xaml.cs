@@ -35,6 +35,7 @@ namespace MemoryGame
         List<Image> Photos;
 
         public DispatcherTimer DispatcherTimer;
+        public int s = 0, m = 0;
 
         public Game_page()
         {
@@ -43,10 +44,38 @@ namespace MemoryGame
             DispatcherTimer.Interval = TimeSpan.FromMilliseconds(1);
             DispatcherTimer.Start();
             DispatcherTimer.Tick += DispatcherTimer_Tick;
+
+
+
+            DispatcherTimer stoper = new DispatcherTimer();
+            stoper.Interval = TimeSpan.FromSeconds(1);
+            stoper.Start();
+            stoper.Tick += Stoper_Tick;
+        }
+
+        private void Stoper_Tick(object sender, object e)
+        {
+            s++;
+            if (s<10)
+            {
+                timer_text.Text = m + ":0" + s;
+                return;
+            }
+             
+            if (s < 60)
+            {
+                timer_text.Text = m + ":" + s;
+                return;
+            }
+
+            m++;
+            s = 0;
+            timer_text.Text = m + ":0" + s;
         }
 
         private void DispatcherTimer_Tick(object sender, object e)
         {
+
             if (!CardClassesList.Any())
             {
                 return;
@@ -86,7 +115,7 @@ namespace MemoryGame
                 }
                 
             }
-            Frame.Navigate(typeof(WinPage));
+            Frame.Navigate(typeof(TryingRE));
         }
 
         public void buildTheRandomPhotos(List<Image> ImageList)

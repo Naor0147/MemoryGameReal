@@ -26,7 +26,7 @@ namespace MemoryGame
         Cards, Football 
     }
 
-
+    
    
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -36,6 +36,7 @@ namespace MemoryGame
         public levelType levelTypeSelect;
         public ThemeType themeTypeSelect;
         Data data= new Data();
+        
         public MainPage()
         {
 

@@ -20,6 +20,9 @@
             <RowDefinition Height="4*"/>
 
         </Grid.RowDefinitions>
+        <TextBlock Grid.Column="1" FontSize="60" VerticalAlignment="Center" HorizontalAlignment="Center"
+                   
+                   x:Name="timer_text">0:00</TextBlock>
 
         <Grid x:Name="Game_Grid" Grid.Row="1" Grid.Column="1" Background="Blue">
             

@@ -20,15 +20,11 @@ namespace MemoryGame
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class WinPage : Page
+    public sealed partial class TryingRE : Page
     {
-        public WinPage()
+        public TryingRE()
         {
             this.InitializeComponent();
-        }
-        private void Remacth_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(TryingRE));
         }
     }
 }
